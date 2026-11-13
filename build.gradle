@@ -1,7 +1,34 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 plugins {
-    id 'com.android.application' version '7.3.1' apply false
-    id 'com.android.library' version '7.3.1' apply false
-//    id 'com.android.application' version '8.7.1' apply false
-//    id 'com.android.library' version '8.7.1' apply false
+//    id 'com.android.application' version '7.3.1' apply false
+//    id 'com.android.library' version '7.3.1' apply false
+    id 'com.android.application' version '8.9.1' apply false
+    id 'com.android.library' version '8.9.1' apply false
+}
+
+subprojects { project ->
+    project.plugins.withType(com.android.build.gradle.LibraryPlugin) {
+        android {
+            publishing {
+                singleVariant('release') {
+                    withSourcesJar()
+                }
+            }
+        }
+        project.apply plugin: 'maven-publish'
+        project.afterEvaluate {
+            if (project.plugins.hasPlugin('maven-publish')) {
+                project.publishing {
+                    publications {
+                        maven(MavenPublication) {
+                            from project.components.release
+                            groupId = 'com.github.solodroid-dev.push'
+                            artifactId = project.name
+                            version = '2.0.0-alpha01'
+                        }
+                    }
+                }
+            }
+        }
+    }
 }

@@ -4,10 +4,10 @@ plugins {
 
 android {
     namespace 'com.solodroid.push.sdk'
-    compileSdk 33
+    compileSdk 36
     defaultConfig {
-        minSdk 21
-        targetSdk 33
+        minSdk 24
+        targetSdk 36
         versionCode 1
         versionName "1.0.0"
         consumerProguardFiles "consumer-rules.pro"
@@ -20,8 +20,8 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
     }
     lintOptions {
         disable 'GradleDependency'
