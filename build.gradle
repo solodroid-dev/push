@@ -24,7 +24,7 @@ subprojects { project ->
                             from project.components.release
                             groupId = 'com.github.solodroid-dev.push'
                             artifactId = project.name
-                            version = '2.0.0-alpha01'
+                            version = '2.0.0'
                         }
                     }
                 }
